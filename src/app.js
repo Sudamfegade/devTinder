@@ -2,13 +2,19 @@ const express = require("express");
 const { connectDB } = require("./config/database");
 const User = require("./models/user");
 const { validateSingupData } = require("./utils/validation");
-
+const cors = require("cors");
 const cookiesparser = require("cookie-parser");
 
 const { userAuth } = require("./middlewares/auth");
 
 const app = express();
 
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(cookiesparser());
 const authRouter = require("./routes/auth");
