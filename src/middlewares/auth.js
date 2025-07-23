@@ -6,7 +6,7 @@ const userAuth = async (req, res, next) => {
     if (!token) {
       throw new Error("token is not found !!!");
     }
-    const decode = await jwt.verify(token, "Devdsds@344");
+    const decode = await jwt.verify(token, process.env.JWT_SECRET);
     const { _id } = decode;
     const user = await User.findById({ _id });
     if (!user) {

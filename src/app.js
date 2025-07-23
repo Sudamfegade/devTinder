@@ -6,7 +6,7 @@ const cors = require("cors");
 const cookiesparser = require("cookie-parser");
 
 const { userAuth } = require("./middlewares/auth");
-
+require("dotenv").config();
 const app = express();
 
 app.use(
@@ -26,7 +26,7 @@ app.use("/", authRouter, profileRouter, requestRouter, userRouter);
 connectDB()
   .then(() => {
     console.log("Database connection established....");
-    app.listen(3030, () => {
+    app.listen(process.env.PORT, () => {
       console.log("Server is successfully listening on port 3030....");
     });
   })
