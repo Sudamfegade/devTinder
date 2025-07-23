@@ -61,7 +61,7 @@ requestRouter.post(
     try {
       const loggedinUser = req.user;
       const { status, requestId } = req.params;
-      console.log(loggedinUser);
+      console.log(loggedinUser, status, requestId);
       const allowedStatus = ["accepted", "rejected"];
 
       if (!allowedStatus.includes(status)) {

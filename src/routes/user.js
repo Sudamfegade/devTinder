@@ -45,7 +45,7 @@ userRouter.get("/user/requests/connections", userAuth, async (req, res) => {
       if (row.fromUserId._id.toString() === loggedinUser._id.toString()) {
         return row.toUserId;
       }
-      row.fromUserId;
+      return row.fromUserId;
     });
     res.json({
       data: data,
@@ -90,7 +90,6 @@ userRouter.get("/feed", userAuth, async (req, res) => {
       .select(USER_SAFE_DATA)
       .skip(skip)
       .limit(limit);
-    console.log(hideUserFromFeed);
     res.json({ data: users });
   } catch (err) {
     res.status(400).send("ERROR: " + err.message);
